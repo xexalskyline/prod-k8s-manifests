@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+ name: cart
+ namespace: argocd
+spec:
+ project: default
+ source:
+   repoURL: git@github.com:xexalskyline/prod-k8s-manifests.git
+   targetRevision: main
+   path: platform/
+ destination:
+   server: https://kubernetes.default.svc
+## syncPolicy:
+##   automated:
+##     enabled: true
+##     pruneL true
+##     allowEmpty: true
+##     selfHeal: true
